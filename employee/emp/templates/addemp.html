@@ -1,0 +1,29 @@
+{%extends 'nav.html'%}
+{% block nav %}
+  <h1 class="text text-dark">Add Employee</h1>
+  {% if messages %}
+  {% for i in messages %}
+     {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+      <!-- <h4 class="text-light">{{i}}</h4> -->
+      <div class="alert alert-success alert-dismissible">
+         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+         <strong>{{i}}</strong> 
+       </div>          
+     {% endif %}
+     {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+      <!-- <h4 class="text-light">{{i}}</h4> -->
+      <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>{{i}}</strong> 
+       </div>          
+     {% endif %}
+  {% endfor %}
+{% endif%}
+  <form action="" method="post">
+    <table class="table table-dark">
+         {% csrf_token %}
+         {{form.as_table}}
+    </table>
+    <button class="btn btn-success">Add</button>
+  </form>
+{% endblock nav %}
